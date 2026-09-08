@@ -1,0 +1,9 @@
+{
+  "name": "petualangan-cerdas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Petualangan Cerdas — game edukasi anak + lisensi per-perangkat (Vercel)",
+  "dependencies": {
+    "@vercel/kv": "^1.0.0"
+  }
+}

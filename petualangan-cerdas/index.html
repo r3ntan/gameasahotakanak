@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Petualangan Cerdas — Petualangan Pulau Ceria</title>
+<meta name="description" content="Game edukasi Bahasa Indonesia untuk anak usia 4-8 tahun: berhitung, huruf, warna, bentuk, hewan, dan matematika seru di Pulau Ceria.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="bg-decor" aria-hidden="true">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <div class="sun"></div>
+  <div class="wave w1"></div><div class="wave w2"></div>
+</div>
+
+<div id="app">
+  <!-- TOP BAR / PROFILE -->
+  <header id="topbar" class="hidden">
+    <button id="btn-home" class="icon-btn" aria-label="Beranda">🏠</button>
+    <div id="profile-chip" role="button" tabindex="0" aria-label="Profil pemain">
+      <div id="profile-avatar">😊</div>
+      <div id="profile-info">
+        <div id="profile-name">Teman</div>
+        <div id="profile-level">Level 1</div>
+        <div id="xp-bar"><div id="xp-fill"></div></div>
+      </div>
+    </div>
+    <div id="currency-chip">
+      <span id="chip-stars" title="Bintang">⭐ <b id="val-stars">0</b></span>
+      <span id="chip-coins" title="Koin">🪙 <b id="val-coins">0</b></span>
+    </div>
+    <button id="btn-parent-top" class="icon-btn" aria-label="Mode Orang Tua">👨‍👩‍👧</button>
+  </header>
+
+  <main id="screens">
+    <!-- LICENSE GATE -->
+    <section id="screen-license" class="screen">
+      <div class="card center-col">
+        <h1 class="game-title small">🔑 Petualangan Cerdas</h1>
+        <p class="bubble-text">Masukkan <b>kode lisensi</b> dari pembelianmu untuk mulai bermain! 🌟</p>
+        <input id="input-key" maxlength="20" placeholder="PC-XXXX-XXXX-XXXX" autocomplete="off" style="text-transform:uppercase">
+        <p id="license-err" class="hint"></p>
+        <button class="btn primary big" id="btn-activate">Aktifkan! 🚀</button>
+        <p id="license-note" class="hint">1 kode hanya untuk 1 perangkat ya! 😊<br>Sudah beli tapi ganti HP? Hubungi penjual untuk reset.</p>
+      </div>
+    </section>
+    <!-- ONBOARDING -->
+    <section id="screen-onboarding" class="screen active">
+      <div class="card center-col">
+        <div id="onboard-mascot" class="mascot big">
+          <div class="mascot-body">
+            <div class="mascot-face">
+              <div class="eye left"><div class="pupil"></div></div>
+              <div class="eye right"><div class="pupil"></div></div>
+              <div class="cheek cl"></div><div class="cheek cr"></div>
+              <div class="mouth"></div>
+            </div>
+            <div class="mascot-hat">🎩</div>
+          </div>
+          <div class="mascot-shadow"></div>
+        </div>
+        <h1 class="game-title">Petualangan Cerdas</h1>
+        <p class="subtitle">🌴 Petualangan Pulau Ceria 🌴</p>
+        <div id="onboard-step-1" class="onboard-step">
+          <p class="bubble-text">Halo! Aku <b>Kiko</b>! 🐣<br>Ayo belajar sambil bermain!</p>
+          <button class="btn primary big" data-onboard="2">Mulai! 🚀</button>
+        </div>
+        <div id="onboard-step-2" class="onboard-step hidden">
+          <p class="bubble-text">Siapa namamu? 😊</p>
+          <input id="input-name" maxlength="14" placeholder="Tulis namamu..." autocomplete="off">
+          <button class="btn primary big" id="btn-save-name">Ayo Berpetualang! 🌟</button>
+        </div>
+        <div id="onboard-step-3" class="onboard-step hidden">
+          <p class="bubble-text" id="onboard-greet">Senang bertemu denganmu!</p>
+          <p class="hint">Jelajahi pulau, mainkan 6 permainan seru,<br>kumpulkan ⭐ bintang dan 🪙 koin!</p>
+          <button class="btn primary big" id="btn-enter-game">Lihat Peta! 🗺️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN MENU -->
+    <section id="screen-menu" class="screen">
+      <div class="card center-col">
+        <h1 class="game-title small">Petualangan Cerdas</h1>
+        <div class="mascot-row">
+          <div class="mascot" id="menu-mascot">
+            <div class="mascot-body"><div class="mascot-face">
+              <div class="eye left"><div class="pupil"></div></div>
+              <div class="eye right"><div class="pupil"></div></div>
+              <div class="cheek cl"></div><div class="cheek cr"></div>
+              <div class="mouth"></div>
+            </div></div><div class="mascot-shadow"></div>
+          </div>
+          <div class="speech"><span id="menu-speech">Pilih petualanganmu! 🎉</span></div>
+        </div>
+        <nav class="menu-grid">
+          <button class="btn primary big menu-btn" data-nav="map">▶️ MAIN</button>
+          <button class="btn menu-btn c-green" data-nav="map">🗺️ PETA PETUALANGAN</button>
+          <button class="btn menu-btn c-orange" data-nav="collection">🎁 KOLEKSI HADIAH</button>
+          <button class="btn menu-btn c-purple" data-nav="achievements">🏆 PRESTASI</button>
+          <button class="btn menu-btn c-blue" data-nav="settings">⚙️ PENGATURAN</button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section id="screen-map" class="screen">
+      <h2 class="screen-title">🗺️ Peta Pulau Ceria</h2>
+      <p class="screen-sub">Ketuk tempat yang terbuka untuk bermain!</p>
+      <div id="island-map"></div>
+      <div class="map-legend">
+        <button class="btn small" data-nav="menu">← Menu</button>
+        <span id="map-progress-label"></span>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div id="game-hud">
+        <button class="btn small" id="btn-quit-game">← Keluar</button>
+        <div id="game-round-dots"></div>
+        <div id="game-score">⭐ 0</div>
+      </div>
+      <div id="game-prompt-bar">
+        <div class="mascot mini" id="game-mascot">
+          <div class="mascot-body"><div class="mascot-face">
+            <div class="eye left"><div class="pupil"></div></div>
+            <div class="eye right"><div class="pupil"></div></div>
+            <div class="mouth"></div>
+          </div></div>
+        </div>
+        <div class="speech grow"><span id="game-prompt">Ayo bermain!</span></div>
+        <button id="btn-repeat-sound" class="icon-btn hidden" aria-label="Ulangi suara">🔊</button>
+      </div>
+      <div id="game-area"></div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section id="screen-collection" class="screen">
+      <h2 class="screen-title">🎁 Koleksi Hadiah</h2>
+      <p class="screen-sub">Lencana hewan yang kamu dapatkan!</p>
+      <div id="badge-grid" class="badge-grid"></div>
+      <div class="center"><button class="btn small" data-nav="menu">← Menu</button></div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="screen-achievements" class="screen">
+      <h2 class="screen-title">🏆 Prestasi</h2>
+      <p class="screen-sub">Kerja kerasmu terekam di sini!</p>
+      <div id="ach-list"></div>
+      <div class="center"><button class="btn small" data-nav="menu">← Menu</button></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="screen-settings" class="screen">
+      <h2 class="screen-title">⚙️ Pengaturan</h2>
+      <div class="card settings-card">
+        <label class="setting-row"><span>🎵 Musik</span>
+          <button id="toggle-music" class="toggle on" aria-label="Musik on/off"><span class="knob"></span></button>
+        </label>
+        <label class="setting-row"><span>🔔 Efek Suara</span>
+          <button id="toggle-sfx" class="toggle on" aria-label="Efek suara on/off"><span class="knob"></span></button>
+        </label>
+        <label class="setting-row"><span>📝 Nama: <b id="settings-name">-</b></span>
+          <button class="btn small" id="btn-change-name">Ubah</button>
+        </label>
+        <div class="setting-row"><span>👨‍👩‍👧 Mode Orang Tua</span>
+          <button class="btn small" id="btn-open-parent">Buka</button>
+        </div>
+        <div class="setting-row"><span>🔑 Lisensi: <b id="settings-license">-</b></span></div>
+        <div class="setting-row danger"><span>🗑️ Hapus Simpanan</span>
+          <button class="btn small danger" id="btn-reset-save">Hapus</button>
+        </div>
+      </div>
+      <div class="center"><button class="btn small" data-nav="menu">← Menu</button></div>
+    </section>
+
+    <!-- PARENT -->
+    <section id="screen-parent" class="screen">
+      <h2 class="screen-title">👨‍👩‍👧 Mode Orang Tua</h2>
+      <div id="parent-gate" class="card center-col">
+        <p>Untuk memastikan kamu orang dewasa,<br>jawab pertanyaan ini:</p>
+        <p id="parent-question" class="big-num">12 + 8 = ?</p>
+        <div id="parent-answers" class="choice-row"></div>
+      </div>
+      <div id="parent-dashboard" class="card hidden">
+        <h3>Ringkasan Belajar <span id="parent-child-name"></span></h3>
+        <div id="parent-stats" class="stat-grid"></div>
+        <h4>Aktivitas per Area</h4>
+        <div id="parent-areas"></div>
+        <div class="row gap">
+          <button class="btn small" data-nav="menu">← Menu</button>
+          <button class="btn small" id="btn-close-parent">Tutup</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- REWARD MODAL -->
+  <div id="modal-overlay" class="hidden">
+    <div id="reward-modal" class="card center-col hidden">
+      <div class="confetti" aria-hidden="true"></div>
+      <h2 id="reward-title">Hebat Sekali! 🎉</h2>
+      <div class="mascot celebrate" id="reward-mascot">
+        <div class="mascot-body"><div class="mascot-face">
+          <div class="eye left happy"><div class="pupil"></div></div>
+          <div class="eye right happy"><div class="pupil"></div></div>
+          <div class="cheek cl"></div><div class="cheek cr"></div>
+          <div class="mouth big-smile"></div>
+        </div></div><div class="mascot-shadow"></div>
+      </div>
+      <p id="reward-msg"></p>
+      <div id="reward-gains" class="row gap"></div>
+      <div id="reward-badges"></div>
+      <button class="btn primary big" id="btn-reward-ok">Lanjut! ⭐</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="hidden"></div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/save.js"></script>
+<script src="js/data.js"></script>
+<script src="js/mascot.js"></script>
+<script src="js/license.js"></script>
+<script src="js/games.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
